@@ -10,11 +10,12 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Antibiotic Resistance</div>
+            <div class="logo">ReMedAI</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#login">Log In</a></li>
             </ul>
         </nav>
     </header>
@@ -40,7 +41,7 @@
     <section id="features" class="content-section reverse">
         <div class="content">
             <div class="text">
-                <h2>Our Features</h2>
+                <h2>Our Mission</h2>
                 <p>Explore our AI-powered chatbot, counterfeit detection, and prevention tips.</p>
             </div>
             <div class="image">
@@ -52,7 +53,7 @@
     <section id="solutions" class="content-section">
         <div class="content">
             <div class="text">
-                <h2>Our Solutions</h2>
+                <h2>Our Vision</h2>
                 <p>We provide AI-powered insights to track antibiotic use and prevent resistance.</p>
             </div>
             <div class="image">
