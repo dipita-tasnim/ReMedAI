@@ -1,28 +1,21 @@
 <?php
 session_start();
-require 'DBconnect.php';
+require_once( 'DBconnect.php' );
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if(isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
+    $result = mysqli_query($conn, $sql);
 
-    $sql = "SELECT * FROM user WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['email'] = $user['email'];
-        header("Location: index.php");
-        exit();
-    } else {
-        echo "Invalid email or password. <a href='user_login.php'>Try again</a>";
+    if(mysqli_num_rows($result) > 0) {
+        $_SESSION['user_loggedin'] = true;
+        $_SESSION['user_email'] = $email; 
+        header('Location: index.php');
+        exit;
+    } 
+    else {
+        echo '<div class="alert alert-danger">error</div>';
     }
-
-    $stmt->close();
-    $conn->close();
 }
 ?>
