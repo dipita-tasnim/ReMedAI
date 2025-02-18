@@ -15,7 +15,7 @@
                 <h1 > ReMedAI </h1>
             </header>
             <h2 style="color:BLACK" >User Login</h2>
-            <form class="login_form" action="login.php" method="post">
+            <form class="login_form" action="login_process.php" method="post">
         <label for="email">Email:</label><br>
         <input type="text" id="email" name="email" placeholder="email" required><br>
         <label for="password">Password:</label><br>
