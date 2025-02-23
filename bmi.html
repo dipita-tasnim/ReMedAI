@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>BMI Calculator</h2>
+        <label for="unit">Select Unit:</label>
+        <select id="unit" onchange="toggleUnit()">
+            <option value="metric">Metric (kg, cm)</option>
+            <option value="imperial">Imperial (lbs, inches)</option>
+        </select>
+        
+        <div class="input-group">
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" placeholder="Enter weight" required>
+            <span id="weight-unit">kg</span>
+        </div>
+        
+        <div class="input-group">
+            <label for="height">Height:</label>
+            <input type="number" id="height" placeholder="Enter height" required>
+            <span id="height-unit">cm</span>
+        </div>
+        
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <div id="result"></div>
+        
+        <div class="bmi-scale">
+            <div class="scale-item underweight">Underweight (<18.5)</div>
+            <div class="scale-item normal">Normal (18.5 - 24.9)</div>
+            <div class="scale-item overweight">Overweight (25 - 29.9)</div>
+            <div class="scale-item obese">Obese (≥30)</div>
+        </div>
+    </div>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .input-group {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 90%;
+            text-align: center;
+            font-size: 16px;
+        }
+        select, button {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        select {
+            background: #f4f4f4;
+        }
+        button {
+            background: #ff758c;
+            color: white;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ff5274;
+        }
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+        .bmi-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .scale-item {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .underweight { background: #87CEFA; }
+        .normal { background: #90EE90; }
+        .overweight { background: #FFD700; }
+        .obese { background: #FF6347; }
+    </style>
+
+    <script>
+        function toggleUnit() {
+            let unit = document.getElementById("unit").value;
+            document.getElementById("weight-unit").textContent = unit === "metric" ? "kg" : "lbs";
+            document.getElementById("height-unit").textContent = unit === "metric" ? "cm" : "in";
+        }
+
+        function calculateBMI() {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let height = parseFloat(document.getElementById("height").value);
+            let unit = document.getElementById("unit").value;
+            
+            if (unit === "imperial") {
+                weight *= 0.453592; // Convert lbs to kg
+                height *= 2.54; // Convert inches to cm
+            }
+            
+            let bmi = weight / ((height / 100) ** 2);
+            let status = "";
+            
+            if (bmi < 18.5) status = "Underweight";
+            else if (bmi < 24.9) status = "Normal weight";
+            else if (bmi < 29.9) status = "Overweight";
+            else status = "Obese";
+            
+            document.getElementById("result").textContent = `BMI: ${bmi.toFixed(2)} - ${status}`;
+        }
+    </script>
+</body>
+</html>
