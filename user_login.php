@@ -23,7 +23,7 @@
         <button type="Login" value="Login" name='login'> Login</button>
             </form>
             <div class="links">
-                <p><a href="registation.php">Register Now!</a></p>
+                <p><a href="user_reg.php">Register Now!</a></p>
             </div>
            
         </div>
