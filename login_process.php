@@ -1,21 +1,23 @@
 <?php
 session_start();
-require_once( 'DBconnect.php' );
+require_once("DBconnect.php");
 
-if(isset($_POST['email']) && isset($_POST['password'])) {
-    $email = $_POST['email'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
     $password = $_POST['password'];
-    $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
-    $result = mysqli_query($conn, $sql);
 
-    if(mysqli_num_rows($result) > 0) {
-        $_SESSION['user_loggedin'] = true;
-        $_SESSION['user_email'] = $email; 
-        header('Location: index.php');
-        exit;
-    } 
-    else {
-        echo '<div class="alert alert-danger">error</div>';
+    // Validate credentials
+    $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+    
+    if ($result && mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+        $_SESSION['user_id'] = $user['user_id'];  // ✅ Store user session
+
+        header("Location: index.php");  // ✅ Redirect to homepage
+        exit();
+    } else {
+        echo "Invalid username or password!";
     }
 }
 ?>

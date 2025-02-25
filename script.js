@@ -1,17 +1,21 @@
-// Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+
+        // Allow external links like "profile.php" to work normally
+        if (!targetId.startsWith("#")) return;
+
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
+        const targetSection = document.getElementById(targetId.substring(1));
         if (targetSection) {
             window.scrollTo({
-                top: targetSection.offsetTop - 60, // Adjust for fixed navbar
+                top: targetSection.offsetTop - 60,
                 behavior: 'smooth'
             });
         }
     });
 });
+
 
 // Navbar background change on scroll
 window.addEventListener('scroll', function() {

@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once("DBconnect.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +12,7 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -15,6 +21,13 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#features">Features</a></li>
+
+                <!-- Show User Profile if logged in, otherwise show Log In -->
+                <?php if (isset($_SESSION['user_id'])) : ?>
+                    <li><a href="profile.php">User Profile</a></li>
+                <?php else : ?>
+                    <li><a href="user_login.php">Log In</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -22,7 +35,7 @@
     <section id="home" class="hero">
         <h1>Fighting Antibiotic Resistance with Technology</h1>
         <p>Empowering users with knowledge and smart tools</p>
-        <a href="user_login.php" class="btn">Log In</a>
+        <!-- <a href="user_login.php" class="btn">Log In</a> -->
     </section>
 
     <section id="about" class="content-section">
@@ -78,3 +91,10 @@
     </footer>
 </body>
 </html>
+
+
+
+
+
+
+

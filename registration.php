@@ -1,8 +1,10 @@
-<?php
+<?php require_once("DBconnect.php");
 session_start();
-require_once('DBconnect.php');
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (
+    isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])
+    && isset($_POST['BMI']) && isset($_POST['height']) && isset($_POST['gender']) 
+    && isset($_POST['password'])
+) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
@@ -10,25 +12,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $height = $_POST['height'];
     $gender = $_POST['gender'];
 
+    // Check email already exists
+    $sql = "SELECT * FROM user WHERE email = '$email' or username = '$username'";
+    $result = mysqli_query($conn, $sql);
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<p class='error'>Invalid email format</p>";
-    } else {
-
-        
-        $stmt = $conn->prepare("INSERT INTO user (username, password, email, BMI, height, gender) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $username, $password, $email, $BMI, $height, $gender);
-        if ($stmt->execute()) {
-            $_SESSION['email'] = $email;
-            header("Location: user_login.php?registration=success"); 
-            exit; 
-        } else {
-            echo "<p class='error'>Registration failed: " . $stmt->error . "</p>";
-        }
-
-        $stmt->close();
+    if (mysqli_num_rows($result) > 0) { // Display error message. Should not create acc with same name or email
+        echo "<script type='text/javascript'>alert('Name or Email already exists')</script>"; 
+        exit();
     }
 
-    $conn->close();
+    $sql = "INSERT INTO user (username, password, email, BMI, height, gender) 
+            VALUES('$username', '$password', '$email', '$BMI', '$height', '$gender')";
+                       
+    $result = mysqli_query($conn, $sql);
+
+    $user_id = mysqli_insert_id($conn); // This function fetch the auto-increment ID of the inserted row.
+    
+    $_SESSION['user_id'] = $user_id;
+
+    header("Location: profile.php");
 }
 ?>

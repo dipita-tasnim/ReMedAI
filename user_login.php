@@ -16,8 +16,8 @@
             </header>
             <h2 style="color:BLACK" >User Login</h2>
             <form class="login_form" action="login_process.php" method="post">
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email" placeholder="email" required><br>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" placeholder="username" required><br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" placeholder="password" required><br>
         <button type="Login" value="Login" name='login'> Login</button>
