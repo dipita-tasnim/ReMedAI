@@ -52,8 +52,10 @@ require_once("DBconnect.php");
     </section>
     
 
+
     <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2025/02/26/16/20250226160041-1E617TBD.js"></script>
+    
      
     
 </body>
