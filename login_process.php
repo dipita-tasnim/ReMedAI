@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = mysqli_fetch_assoc($result);
         $_SESSION['user_id'] = $user['user_id'];  // ✅ Store user session
 
-        header("Location: index.php");  // ✅ Redirect to homepage
+        header("Location: home.php");  // ✅ Redirect to homepage
         exit();
     } else {
         echo "Invalid username or password!";
