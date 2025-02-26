@@ -202,7 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <div class="button-container">
-            <a href="user_login.php" class="logout-button">Logout</a>
+            <a href="logout.php" class="logout-button">Logout</a>
         </div>
         <div class="button-tracker">
             <a href="tracker_page.php" class="button-tracker">Antibiotic Tracker</a>

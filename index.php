@@ -42,7 +42,11 @@ require_once("DBconnect.php");
         <div class="content">
             <div class="text">
                 <h2>About Us</h2>
-                <p>We aim to combat antibiotic resistance by providing smart tools and accurate information.</p>
+                <p>ReMedAI is a pioneering initiative dedicated to combating antibiotic resistance (AR) through
+innovative AI-driven solutions. Our team is passionately committed to addressing the growing
+global crisis of antibiotic resistance. By leveraging cutting-edge technology, we aim to
+revolutionize healthcare practices, promote responsible antibiotic use, and improve health
+outcomes for communities in Bangladesh and beyond.</p>
             </div>
             <div class="image">
                 <img src="about.jpg" alt="About Us">
@@ -54,10 +58,14 @@ require_once("DBconnect.php");
         <div class="content">
             <div class="text">
                 <h2>Our Mission</h2>
-                <p>Explore our AI-powered chatbot, counterfeit detection, and prevention tips.</p>
+                <p>Our mission is to reduce antibiotic resistance by empowering individuals and healthcare
+providers with intelligent tools that promote safe and effective antibiotic use. Through
+AI-powered systems, we strive to enhance awareness, optimize prescriptions, and ensure
+adherence to treatment regimens, ultimately saving lives and alleviating the burden on
+healthcare systems.</p>
             </div>
             <div class="image">
-                <img src="features.jpg" alt="Our Features">
+                <img src="features.png" alt="Our Features">
             </div>
         </div>
     </section>
@@ -66,10 +74,13 @@ require_once("DBconnect.php");
         <div class="content">
             <div class="text">
                 <h2>Our Vision</h2>
-                <p>We provide AI-powered insights to track antibiotic use and prevent resistance.</p>
+                <p>We envision a world where antibiotic resistance is no longer a threat to public health. By
+integrating AI into healthcare, we aim to create a sustainable solution where patients and
+doctors work together to make informed decisions, reduce unnecessary antibiotic consumption,
+and improve overall health outcomes.</p>
             </div>
             <div class="image">
-                <img src="solutions.jpg" alt="Our Solutions">
+                <img src="solutions.png" alt="Our Solutions">
             </div>
         </div>
     </section>
@@ -78,10 +89,17 @@ require_once("DBconnect.php");
         <div class="content">
             <div class="text">
                 <h2>Our Impact</h2>
-                <p>Helping individuals and healthcare providers make informed decisions.</p>
+                <p>ReMedAI is set to make a significant impact by reducing the misuse and overuse of antibiotics
+through AI-driven dose monitoring and decision support. We aim to increase public awareness
+about antibiotic resistance and its consequences, ensuring patients complete their prescribed
+antibiotic courses to minimize the risk of resistance. By providing doctors with data-driven
+insights, we enable them to prescribe personalized and accurate treatments. Ultimately,
+ReMedAI contributes to global efforts to combat antibiotic resistance, saving millions of lives and
+reducing the strain on healthcare systems. Through these efforts, we strive to create a healthier
+future for all.</p>
             </div>
             <div class="image">
-                <img src="impact.jpg" alt="Our Impact">
+                <img src="impact.png" alt="Our Impact">
             </div>
         </div>
     </section>
