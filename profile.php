@@ -35,182 +35,228 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-
-    
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>antibiotics</title>
+    <title>Profile - ReMedAI</title>
     <style>
+        /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: lightblue;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #D5E8E3, #F7F3E9);
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        header {
-            position: absolute;
-            top: 10px;
-            left: 20px;
+        /* Top Bar */
+        .top-bar {
+            width: 100%;
+            background: linear-gradient(135deg, #52796F, #3D6355);
             color: white;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar .logo {
             font-size: 24px;
             font-weight: bold;
         }
 
+        /* Container */
         .container {
-            max-width: 600px;
-            margin: 120px auto;
-            padding: 50px;
-            background-color: #ECECEC;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 80px; /* Push content below fixed bar */
+        }
+
+        /* Profile Section */
+        .profile-info {
+            flex: 1;
+            background: #FAFAFA;
+            padding: 20px;
             border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
         h1 {
+            font-size: 22px;
+            color: #445C6E;
             text-align: center;
-            color: #333;
+            margin-bottom: 15px;
         }
 
         .user-info {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         .user-info li {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #fafafa;
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            width: 100%;
         }
 
         .user-info li span {
             font-weight: bold;
-            color: #555;
+            color: #52796F;
         }
 
-        .textarea-container {
-            margin-top: 20px;
+        /* About Me Section */
+        .about-me {
+            flex: 1;
+            background: #FAFAFA;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
-        textarea {
+        .about-me textarea {
             width: 100%;
-            height: 100px;
+            height: 90px;
             padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+            border-radius: 6px;
+            border: 1px solid #ccc;
             font-size: 14px;
             resize: none;
+            outline: none;
+            background: white;
         }
 
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .save-button,
-        .logout-button {
-            padding: 10px 20px;
-            background-color: white;
-            text-align: center;
+        /* Save Button */
+        .save-button {
+            background: #52796F;
+            color: white;
+            padding: 6px 12px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+            border-radius: 6px;
+            transition: 0.3s ease-in-out;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            font-size: 12px;
+            width: auto;
+            align-self: flex-end;
+            margin-top: 10px;
         }
 
-        
-
         .save-button:hover {
-            background-color: #28a745;
+            background: #3D6355;
+        }
+
+        /* Layout - Make profile and about me side by side */
+        .content-wrapper {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .profile-info, .about-me {
+            flex: 1;
+        }
+
+        /* Logout Button - At the Bottom Right */
+        .logout-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .logout-button {
+            background: #D9534F;
             color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
         }
 
         .logout-button:hover {
-            background-color: rgb(253, 66, 66);
-            color: white;
+            background: #C9302C;
         }
 
-        .button-tracker {
-            position: absolute;
-            top: 10px;
-            right: 40px;
-            margin-top: 10px;
-            color:#333;
-            font-weight: bold;
-            background-color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-           
-        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
 
-        .button-tracker:hover {
-            background-color:rgb(173, 205, 240);
-        }
-        
-        /* .button-update {
-            padding: 10px 20px;
-            position: absolute;
-            right: 150px;
-            margin-bottom: auto;
-            background-color: white;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+            .content-wrapper {
+                flex-direction: column;
+            }
 
-        .button-update:hover {
-            background-color: #28a745;
-            color: white;
-        } */
+            .top-bar {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <header>ReMedAI</header>
-    <div class="container">
-        <h1>Welcome, <?php echo $user["username"]; ?></h1>
-        <ul class="user-info">
-            <li><span>Email:</span> <?php echo $user["email"]; ?></li>
-            <li><span>BMI:</span> <?php echo $user["BMI"]; ?></li>
-            <li><span>Height:</span> <?php echo $user["height"]; ?></li>
-            <li><span>Gender:</span> <?php echo $user["gender"]; ?></li>
-        </ul>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">ReMedAI</div>
+    </div>
 
-        <!-- "About Me" Section -->
-        <div class="textarea-container">
-            <form method="POST">
-                <label for="about_me"><strong>About Me:</strong></label>
-                <textarea name="about_me" id="about_me"><?php echo $user['about_me'] ?? ''; ?></textarea>
-                <button type="submit" class="save-button">Save</button>
-            </form>
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Profile Info -->
+            <div class="profile-info">
+                <h1>Welcome, <?php echo htmlspecialchars($user["username"]); ?></h1>
+                <ul class="user-info">
+                    <li><span>Email:</span> <?php echo htmlspecialchars($user["email"]); ?></li>
+                    <li><span>BMI:</span> <?php echo htmlspecialchars($user["BMI"]); ?></li>
+                    <li><span>Height:</span> <?php echo htmlspecialchars($user["height"]); ?></li>
+                    <li><span>Gender:</span> <?php echo htmlspecialchars($user["gender"]); ?></li>
+                </ul>
+            </div>
+
+            <!-- About Me Section (Right Side) -->
+            <div class="about-me">
+                <form method="POST">
+                    <label for="about_me"><strong>About Me:</strong></label>
+                    <textarea name="about_me" id="about_me"><?php echo htmlspecialchars($user['about_me'] ?? ''); ?></textarea>
+                    <button type="submit" class="save-button">Save</button>
+                </form>
+            </div>
         </div>
 
-        <div class="button-container">
+        <!-- Logout Button (Bottom Right) -->
+        <div class="logout-container">
             <a href="logout.php" class="logout-button">Logout</a>
         </div>
-        <div class="button-tracker">
-            <a href="tracker_page.php" class="button-tracker">Antibiotic Tracker</a>
-        </div>
-        <!-- <div class="button-update">
-            <a href="profile.php" class="button-update">update profile</a>
-        </div> -->
-
     </div>
 </body>
 
