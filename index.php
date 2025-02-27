@@ -103,7 +103,8 @@ future for all.</p>
             </div>
         </div>
     </section>
-
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/26/16/20250226160041-1E617TBD.js"></script>
     <footer>
         <p>&copy; 2025 Antibiotic Resistance Project</p>
     </footer>
