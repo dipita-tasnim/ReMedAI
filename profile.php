@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Update database
     $update_sql = "UPDATE user SET about_me = '$about_me' WHERE user_id = '$user_id'";
     if (mysqli_query($conn, $update_sql)) {
-        $user['about_me'] = $about_me; 
+        $user['about_me'] = $about_me;
     } else {
         echo "Error updating record: " . mysqli_error($conn);
     }
@@ -86,7 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            margin-top: 80px; /* Push content below fixed bar */
+            margin-top: 80px;
+            /* Push content below fixed bar */
         }
 
         /* Profile Section */
@@ -177,7 +178,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             gap: 20px;
         }
 
-        .profile-info, .about-me {
+        .profile-info,
+        .about-me {
             flex: 1;
         }
 
@@ -200,11 +202,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             cursor: pointer;
             border: none;
             font-size: 14px;
+            margin-left: auto;
+            margin-right: 30px;
+            /* Pushes button to the right */
         }
 
         .logout-button:hover {
             background: #C9302C;
         }
+
+          /* Logout Button - At the Bottom Right */
+          .edit-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .edit-button {
+            background:rgb(93, 164, 89);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+
+        .edit-button:hover {
+            background:rgb(76, 123, 73);
+        }
+
+
 
         @media (max-width: 768px) {
             .container {
@@ -216,9 +248,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             .top-bar {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+                display: flex;
+                justify-content: space-between;
             }
         }
     </style>
@@ -226,8 +257,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <!-- Top Bar -->
+    <!-- Top Bar -->
     <div class="top-bar">
         <div class="logo">ReMedAI</div>
+        <a href="logout.php" class="logout-button">Logout</a>
     </div>
 
     <div class="container">
@@ -246,16 +279,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- About Me Section (Right Side) -->
             <div class="about-me">
                 <form method="POST">
-                    <label for="about_me"><strong>About Me:</strong></label>
+                    <label for="about_me"><strong>Illness & Allergies:</strong></label>
                     <textarea name="about_me" id="about_me"><?php echo htmlspecialchars($user['about_me'] ?? ''); ?></textarea>
                     <button type="submit" class="save-button">Save</button>
                 </form>
             </div>
         </div>
 
-        <!-- Logout Button (Bottom Right) -->
-        <div class="logout-container">
-            <a href="logout.php" class="logout-button">Logout</a>
+        <!-- edit Button (Bottom Right) -->
+        <div class="edit-container">
+            <a href="edit.php" class="edit-button">edit</a>
         </div>
     </div>
 </body>
