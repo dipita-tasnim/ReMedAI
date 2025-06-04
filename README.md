@@ -1,4 +1,4 @@
-AI-driven platform of antibiotic resistance
+AI-driven prototype of antibiotic resistance 
 
 Tech Stack:
 HTML | CSS | PHP | MySQL
