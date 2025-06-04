@@ -1,7 +1,1 @@
-<<<<<<< HEAD
-# Antibiotics project
-<br>
-This is just a prototype 
-=======
-# ReMedAI
->>>>>>> e9643f864e38de9665499c9e1f7b896e55c51c6d
+[Quick view](https://drive.google.com/file/d/1YWV9vy8fPGB4iMOG4vz67Yknrbew-YjL/view?usp=drive_link)
